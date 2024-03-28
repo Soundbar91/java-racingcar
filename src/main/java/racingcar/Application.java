@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,6 +12,12 @@ public class Application {
 
             System.out.println("시도할 회수는 몇회인가요?");
             int gameTry = gameTryCheck(readLine());
+
+            int[] carsDist = new int[carsName.length];
+            System.out.println("실행 결과");
+            while (gameTry-- > 0) {
+                gamePlay(carsName, carsDist);
+            }
 
         } catch (IllegalAccessException e) {
             System.out.print("애플리케이션을 종료합니다.");
@@ -38,6 +45,13 @@ public class Application {
             return gameTry;
         } catch (NumberFormatException e) {
             throw new IllegalAccessException("숫자를 입력하세요.");
+        }
+    }
+
+    public static void gamePlay(String[] carsName, int[] carsDist) {
+        for (int i = 0; i < carsName.length; i++) {
+            int random = pickNumberInRange(0, 9);
+            if (random >= 4) carsDist[i]++;
         }
     }
 }
