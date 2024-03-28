@@ -26,6 +26,7 @@ public class Application {
             int maxDist = findMaxDist(carsDist);
             List<String> winner = findWinner(carsName, carsDist, maxDist);
 
+            printWinner(winner);
         } catch (IllegalAccessException e) {
             System.out.print("애플리케이션을 종료합니다.");
         }
@@ -87,5 +88,17 @@ public class Application {
         }
 
         return winner;
+    }
+
+    public static void printWinner(List<String> winner) {
+        System.out.print("최종 우승자 : ");
+
+        if (winner.size() == 1) System.out.println(winner.get(0));
+        else {
+            for (int i = 0; i < winner.size() - 1; i++) {
+                System.out.print(winner.get(i) + ", ");
+            }
+            System.out.println(winner.get(winner.size() - 1));
+        }
     }
 }
