@@ -17,6 +17,7 @@ public class Application {
             System.out.println("실행 결과");
             while (gameTry-- > 0) {
                 gamePlay(carsName, carsDist);
+                gamePrint(carsName, carsDist);
             }
 
         } catch (IllegalAccessException e) {
@@ -53,5 +54,14 @@ public class Application {
             int random = pickNumberInRange(0, 9);
             if (random >= 4) carsDist[i]++;
         }
+    }
+
+    public static void gamePrint(String[] carsName, int[] carsDist) {
+        for (int i = 0; i < carsName.length; i++) {
+            System.out.print(carsName[i] + " : ");
+            for (int j = 0; j < carsDist[i]; j++) System.out.print('-');
+            System.out.println();
+        }
+        System.out.println();
     }
 }
