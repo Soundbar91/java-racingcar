@@ -103,15 +103,15 @@ public class Application {
         return winners;
     }
 
-    public static void printWinner(List<String> winner) {
+    public static void printWinner(String[] winner) {
         System.out.print("최종 우승자 : ");
 
-        if (winner.size() == 1) System.out.println(winner.get(0));
+        if (winner.length == 1) System.out.println(winner[0]);
         else {
-            for (int i = 0; i < winner.size() - 1; i++) {
-                System.out.print(winner.get(i) + ", ");
+            for (int i = 0; i < winner.length - 1; i++) {
+                System.out.print(winner[i] + ", ");
             }
-            System.out.println(winner.get(winner.size() - 1));
+            System.out.println(winner[winner.length - 1]);
         }
     }
 }
