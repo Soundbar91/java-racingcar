@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -24,7 +23,7 @@ public class Application {
             }
 
             int maxDist = findMaxDist(carsDist);
-            List<String> winner = findWinner(carsName, carsDist, maxDist);
+            String[] winner = findWinner(carsName, carsDist, maxDist);
 
             printWinner(winner);
         } catch (IllegalAccessException e) {
@@ -80,14 +79,28 @@ public class Application {
         return max;
     }
 
-    public static List<String> findWinner(String[] carsName, int[] carsDist, int maxDist) {
-        List<String> winner = new ArrayList<>();
+    public static int countWinners(int[] carsDist, int maxDist) {
+        int count = 0;
+        for (int dist : carsDist) {
+            if (dist == maxDist) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static String[] findWinner(String[] carsName, int[] carsDist, int maxDist) {
+        int count = countWinners(carsDist, maxDist);
+        String[] winners = new String[count];
+        int index = 0;
 
         for (int i = 0; i < carsName.length; i++) {
-            if (carsDist[i] == maxDist) winner.add(carsName[i]);
+            if (carsDist[i] == maxDist) {
+                winners[index++] = carsName[i];
+            }
         }
 
-        return winner;
+        return winners;
     }
 
     public static void printWinner(List<String> winner) {
