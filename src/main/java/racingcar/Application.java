@@ -25,6 +25,7 @@ public class Application {
 
             printWinner(winner);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             System.out.print("애플리케이션을 종료합니다.");
         }
     }
