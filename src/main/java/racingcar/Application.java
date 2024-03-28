@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -19,6 +22,9 @@ public class Application {
                 gamePlay(carsName, carsDist);
                 gamePrint(carsName, carsDist);
             }
+
+            int maxDist = findMaxDist(carsDist);
+            List<String> winner = findWinner(carsName, carsDist, maxDist);
 
         } catch (IllegalAccessException e) {
             System.out.print("애플리케이션을 종료합니다.");
@@ -63,5 +69,23 @@ public class Application {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static int findMaxDist(int[] carsDist) {
+        int max = -1;
+        for (int dist : carsDist) {
+            if (max < dist) max = dist;
+        }
+        return max;
+    }
+
+    public static List<String> findWinner(String[] carsName, int[] carsDist, int maxDist) {
+        List<String> winner = new ArrayList<>();
+
+        for (int i = 0; i < carsName.length; i++) {
+            if (carsDist[i] == maxDist) winner.add(carsName[i]);
+        }
+
+        return winner;
     }
 }
