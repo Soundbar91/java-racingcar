@@ -24,35 +24,35 @@ public class Application {
             String[] winner = findWinner(carsName, carsDist, maxDist);
 
             printWinner(winner);
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             System.out.print("애플리케이션을 종료합니다.");
         }
     }
 
-    public static String[] carNameCheck(String[] carsName) throws IllegalAccessException {
+    public static String[] carNameCheck(String[] carsName) throws IllegalArgumentException {
         if (carsName.length < 2)
-            throw new IllegalAccessException("최소 2개의 자동차가 참여해야 합니다.");
+            throw new IllegalArgumentException("최소 2개의 자동차가 참여해야 합니다.");
 
         for (String carName : carsName){
             if (carName.length() > 5) {
-                throw new IllegalAccessException("자동차 이름의 길이는 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");
             }
         }
 
         return carsName;
     }
 
-    public static int gameTryCheck(String input) throws IllegalAccessException {
+    public static int gameTryCheck(String input) throws IllegalArgumentException {
         try {
             int gameTry = Integer.parseInt(input);
 
             if (gameTry < 0) {
-                throw new IllegalAccessException("시도 회수는 음수가 될 수 없습니다.");
+                throw new IllegalArgumentException("시도 회수는 음수가 될 수 없습니다.");
             }
 
             return gameTry;
         } catch (NumberFormatException e) {
-            throw new IllegalAccessException("숫자를 입력하세요.");
+            throw new IllegalArgumentException("숫자를 입력하세요.");
         }
     }
 
