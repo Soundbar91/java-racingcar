@@ -5,30 +5,30 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
+
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String[] carsName;
+
         try {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            String[] carsName = carNameCheck(readLine().split(","));
-
-            System.out.println("시도할 회수는 몇회인가요?");
-            int gameTry = gameTryCheck(readLine());
-
-            int[] carsDist = new int[carsName.length];
-
-            System.out.println("실행 결과");
-            while (gameTry-- > 0) {
-                gamePlay(carsName, carsDist);
-                gamePrint(carsName, carsDist);
-            }
-
-            int maxDist = findMaxDist(carsDist);
-            String[] winner = findWinner(carsName, carsDist, maxDist);
-
-            printWinner(winner);
+            carsName = carNameCheck(readLine().split(","));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            System.out.print("애플리케이션을 종료합니다.");
+            System.out.println("애플리케이션을 종료합니다.");
             throw e;
         }
+
+        System.out.println("시도할 회수는 몇회인가요?");
+        int gameTry;
+
+        try {
+            gameTry = gameTryCheck(readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println("애플리케이션을 종료합니다.");
+            throw e;
+        }
+
+        playGame(gameTry, carsName);
     }
 
     public static String[] carNameCheck(String[] carsName) throws IllegalArgumentException {
@@ -39,6 +39,7 @@ public class Application {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");
             }
+            if (carName.equals(" ")) throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
         }
 
         return carsName;
@@ -58,7 +59,7 @@ public class Application {
         }
     }
 
-    public static void gamePlay(String[] carsName, int[] carsDist) {
+    public static void random(String[] carsName, int[] carsDist) {
         for (int i = 0; i < carsName.length; i++) {
             if (pickNumberInRange(0, 9) >= 4) carsDist[i]++;
         }
@@ -81,6 +82,18 @@ public class Application {
         return max;
     }
 
+    public static void playGame(int gameTry, String[] carsName) {
+        int[] carsDist = new int[carsName.length];
+
+        System.out.println("실행 결과");
+        while (gameTry-- > 0) {
+            random(carsName, carsDist);
+            gamePrint(carsName, carsDist);
+        }
+
+        findWinner(carsName, carsDist);
+    }
+
     public static int countWinners(int[] carsDist, int maxDist) {
         int count = 0;
         for (int dist : carsDist) {
@@ -91,8 +104,10 @@ public class Application {
         return count;
     }
 
-    public static String[] findWinner(String[] carsName, int[] carsDist, int maxDist) {
+    public static void findWinner(String[] carsName, int[] carsDist) {
+        int maxDist = findMaxDist(carsDist);
         int count = countWinners(carsDist, maxDist);
+
         String[] winners = new String[count];
         int index = 0;
 
@@ -102,18 +117,15 @@ public class Application {
             }
         }
 
-        return winners;
+        printWinner(winners);
     }
 
     public static void printWinner(String[] winner) {
         System.out.print("최종 우승자 : ");
 
-        if (winner.length == 1) System.out.println(winner[0]);
-        else {
-            for (int i = 0; i < winner.length - 1; i++) {
-                System.out.print(winner[i] + ", ");
-            }
-            System.out.println(winner[winner.length - 1]);
+        System.out.print(winner[0]);
+        for (int i = 1; i < winner.length; i++) {
+            System.out.print(", " + winner[i]);
         }
     }
 }
