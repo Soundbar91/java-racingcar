@@ -17,7 +17,7 @@ public class CarRacing {
     private int maxDist = -1;
 
     public void startRacing() {
-        createCar.inputCarName();
+        cars = createCar.inputCarName();
         int T = inputTryNumber();
         while (T-- > 0) playGame();
         findMaxDist();

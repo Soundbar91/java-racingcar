@@ -9,12 +9,12 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class CreateCar {
     String[] carsName;
 
-    public void inputCarName() {
+    public List<Car> inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         try {
             carsName = carNameCheck(readLine().split(","));
-            createCar();
+            return createCar();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             System.out.println("애플리케이션을 종료합니다.");
