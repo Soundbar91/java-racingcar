@@ -4,9 +4,8 @@ public class SmallCar implements Car {
     private final String name;
     private int position = 0;
 
-    public SmallCar(String name, int position) {
+    public SmallCar(String name) {
         this.name = name;
-        this.position = position;
     }
 
     @Override
@@ -14,10 +13,12 @@ public class SmallCar implements Car {
         this.position++;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getPosition() {
         return position;
     }
