@@ -1,7 +1,5 @@
 package racingcar.car;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 public class SmallCar implements Car {
     private final String name;
     private int position = 0;
@@ -13,7 +11,7 @@ public class SmallCar implements Car {
 
     @Override
     public void move() {
-        if (pickNumberInRange(0, 9) >= 4) this.position++;
+        this.position++;
     }
 
     public String getName() {
