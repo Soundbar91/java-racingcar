@@ -18,8 +18,8 @@ public class CarRacing {
 
     public void startRacing() {
         cars = createCar.inputCarName();
-        int T = inputTryNumber();
-        while (T-- > 0) playGame();
+        int gameTry = inputTryNumber();
+        while (gameTry-- > 0) playGame();
         findMaxDist();
         findWinner();
         printWinner();
