@@ -51,16 +51,19 @@ public class CreateCar {
 
         for (String carName : carsName) {
             int randomNumber = generator.randomNumber(0, carCount);
+            CarType carType = CarType.values()[randomNumber];
 
-            switch (randomNumber) {
-                case 0:
+            switch (carType) {
+                case SMALL:
                     cars.add(new SmallCar(carName));
                     break;
-                case 1:
+                case Medium:
                        cars.add(new MediumCar(carName));
                        break;
-                case 2:
+                case Large:
                     cars.add(new LargeCar(carName));
+                default:
+                    throw new IllegalArgumentException("차 종류가 없습니다.");
             }
         }
 
