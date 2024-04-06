@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import racingcar.generator.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class CreateCar {
-    String[] carsName;
+    private final int carCount = 3;
+    private String[] carsName;
+
+    RandomNumberGenerator generator = new RandomNumberGenerator() {
+        @Override
+        public int randomNumber(int min, int max) {
+            return (int) (Math.random() * (max - min + 1)) + min;
+        }
+    };
 
     public List<Car> inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -40,7 +50,7 @@ public class CreateCar {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carsName) {
-            int randomNumber = pickNumberInRange(0, 2);
+            int randomNumber = generator.randomNumber(0, carCount);
 
             switch (randomNumber) {
                 case 0:

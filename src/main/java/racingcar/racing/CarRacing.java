@@ -2,6 +2,7 @@ package racingcar.racing;
 
 import racingcar.car.Car;
 import racingcar.car.CreateCar;
+import racingcar.generator.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,13 @@ public class CarRacing {
     private List<Car> winner = new ArrayList<>();
     private CreateCar createCar = new CreateCar();
     private int maxDist = -1;
+
+    RandomNumberGenerator generator = new RandomNumberGenerator() {
+        @Override
+        public int randomNumber(int min, int max) {
+            return (int) (Math.random() * (max - min + 1)) + min;
+        }
+    };
 
     public void startRacing() {
         cars = createCar.inputCarName();
@@ -65,7 +73,7 @@ public class CarRacing {
     }
 
     public boolean randomNumber() {
-        return pickNumberInRange(0, 9) >= 4;
+        return generator.randomNumber(0, 9) >= 4;
     }
 
     public void findMaxDist() {
