@@ -15,6 +15,7 @@ public class CarRacing {
     private List<Car> cars = new ArrayList<>();
     private List<Car> winner = new ArrayList<>();
     private CreateCar createCar = new CreateCar();
+    private InsertCoin insertCoin = new InsertCoin();
     private int maxDist = -1;
 
     RandomNumberGenerator generator = new RandomNumberGenerator() {
@@ -26,33 +27,11 @@ public class CarRacing {
 
     public void startRacing() {
         cars = createCar.inputCarName();
-        int gameTry = inputTryNumber();
+        int gameTry = insertCoin.inputTryNumber();
         while (gameTry-- > 0) playGame();
         findMaxDist();
         findWinner();
         printWinner();
-    }
-
-    public int inputTryNumber() {
-        try {
-            System.out.println("시도할 회수는 몇회인가요?");
-            return gameTryCheck(readLine());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.out.println("애플리케이션을 종료합니다.");
-            throw e;
-        }
-    }
-
-    public int gameTryCheck(String input) throws IllegalArgumentException {
-        try {
-            int gameTry = Integer.parseInt(input);
-            if (gameTry < 0) throw new IllegalArgumentException("시도 회수는 음수가 될 수 없습니다.");
-
-            return gameTry;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력하세요.");
-        }
     }
 
     public void playGame() {
