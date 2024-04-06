@@ -12,6 +12,10 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.lang.Math.max;
 
 public class CarRacing {
+    private final int randomNumberMin = 0;
+    private final int randomNumberMax = 9;
+    private final int randomNumberStandard = 4;
+
     private List<Car> cars = new ArrayList<>();
     private List<Car> winner = new ArrayList<>();
     private CreateCar createCar = new CreateCar();
@@ -52,7 +56,7 @@ public class CarRacing {
     }
 
     public boolean randomNumber() {
-        return generator.randomNumber(0, 9) >= 4;
+        return generator.randomNumber(randomNumberMin, randomNumberMax) >= randomNumberStandard;
     }
 
     public void findMaxDist() {
