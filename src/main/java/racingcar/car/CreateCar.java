@@ -37,7 +37,7 @@ public class CreateCar {
             throw new IllegalArgumentException("최소 2개의 자동차가 참여해야 합니다.");
 
         for (String carName : carsName){
-            if (carName.length() > 5) {
+            if (carName.length() > 5 || carName.length() == 0) {
                 throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");
             }
             if (carName.equals(" ")) throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
