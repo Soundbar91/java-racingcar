@@ -2,7 +2,6 @@ package racingcar.racing;
 
 import racingcar.car.Car;
 import racingcar.car.CreateCar;
-import racingcar.generator.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +20,6 @@ public class CarRacing {
     private CreateCar createCar = new CreateCar();
     private InsertCoin insertCoin = new InsertCoin();
     private int maxDist = -1;
-
-    RandomNumberGenerator generator = new RandomNumberGenerator() {
-        @Override
-        public int randomNumber(int min, int max) {
-            return (int) (Math.random() * (max - min + 1)) + min;
-        }
-    };
 
     public void startRacing() {
         cars = createCar.inputCarName();
@@ -56,7 +48,7 @@ public class CarRacing {
     }
 
     public boolean randomNumber() {
-        return generator.randomNumber(randomNumberMin, randomNumberMax) >= randomNumberStandard;
+        return pickNumberInRange(randomNumberMin, randomNumberMax) >= randomNumberStandard;
     }
 
     public void findMaxDist() {
