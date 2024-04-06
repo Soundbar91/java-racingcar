@@ -50,7 +50,7 @@ public class CreateCar {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carsName) {
-            int randomNumber = generator.randomNumber(0, carCount);
+            int randomNumber = generator.randomNumber(0, carCount - 1);
             cars.add(choseCarType(randomNumber, carName));
         }
 
