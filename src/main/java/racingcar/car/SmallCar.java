@@ -1,9 +1,6 @@
 package racingcar.car;
 
-public class SmallCar implements Car {
-    private final String name;
-    private int position = 0;
-
+public class SmallCar extends Car {
     public SmallCar(String name) {
         this.name = name;
     }
@@ -11,15 +8,5 @@ public class SmallCar implements Car {
     @Override
     public void move() {
         this.position++;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getPosition() {
-        return position;
     }
 }
