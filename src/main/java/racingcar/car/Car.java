@@ -1,7 +1,16 @@
 package racingcar.car;
 
-public interface Car {
-    void move();
-    String getName();
-    int getPosition();
+public abstract class Car {
+    protected String name = "";
+    protected int position = 0;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public abstract void move();
 }
