@@ -39,7 +39,8 @@ public class CarRacing {
 
     public void gamePrint() {
         for (Car car : cars) {
-            System.out.print(car.getName() + "(" + car.getClass().getSimpleName() + ")" + " : ");
+//            System.out.print(car.getName() + "(" + car.getClass().getSimpleName() + ")" + " : ");
+            System.out.print(car.getName() + " : ");
             System.out.print("-".repeat(car.getPosition()));
             System.out.println();
         }

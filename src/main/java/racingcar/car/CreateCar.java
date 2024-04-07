@@ -41,8 +41,9 @@ public class CreateCar {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carsName) {
-            int randomNumber = pickNumberInRange(0, carCount - 1);
-            cars.add(choseCarType(randomNumber, carName));
+//            int randomNumber = pickNumberInRange(0, carCount - 1);
+//            cars.add(choseCarType(randomNumber, carName));
+            cars.add(choseCarType(0, carName));
         }
 
         return cars;
