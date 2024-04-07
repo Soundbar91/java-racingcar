@@ -15,18 +15,15 @@ public class CarRacing {
     private static final int randomNumberStandard = 4;
 
     private List<Car> cars = new ArrayList<>();
-    private List<Car> winner = new ArrayList<>();
     private CreateCar createCar = new CreateCar();
     private InsertCoin insertCoin = new InsertCoin();
-    private int maxDist = -1;
+    private CarWinner carWinner = new CarWinner();
 
     public void startRacing() {
         cars = createCar.inputCarName();
         int gameTry = insertCoin.inputTryNumber();
         while (gameTry-- > 0) playGame();
-        findMaxDist();
-        findWinner();
-        printWinner();
+        carWinner.findWinner(cars);
     }
 
     public void playGame() {
@@ -49,22 +46,5 @@ public class CarRacing {
 
     public boolean randomNumber() {
         return pickNumberInRange(randomNumberMin, randomNumberMax) >= randomNumberStandard;
-    }
-
-    public void findMaxDist() {
-        for (Car car : cars) maxDist = max(maxDist, car.getPosition());
-    }
-
-    public void findWinner() {
-        for (Car car : cars) if (car.getPosition() == maxDist) winner.add(car);
-    }
-
-    public void printWinner() {
-        System.out.print("최종 우승자 : ");
-
-        System.out.print(winner.get(0).getName());
-        for (int i = 1; i < winner.size(); i++) {
-            System.out.print(", " + winner.get(i).getName());
-        }
     }
 }
