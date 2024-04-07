@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+//import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class CreateCar {
     private final int carCount = 3;

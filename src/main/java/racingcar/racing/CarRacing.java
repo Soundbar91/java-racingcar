@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-import static java.lang.Math.max;
 
 public class CarRacing {
     private static final int randomNumberMin = 0;
