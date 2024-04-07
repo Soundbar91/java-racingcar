@@ -10,9 +10,9 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.lang.Math.max;
 
 public class CarRacing {
-    private final int randomNumberMin = 0;
-    private final int randomNumberMax = 9;
-    private final int randomNumberStandard = 4;
+    private static final int randomNumberMin = 0;
+    private static final int randomNumberMax = 9;
+    private static final int randomNumberStandard = 4;
 
     private List<Car> cars = new ArrayList<>();
     private List<Car> winner = new ArrayList<>();

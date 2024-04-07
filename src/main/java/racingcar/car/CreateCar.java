@@ -28,10 +28,8 @@ public class CreateCar {
             throw new IllegalArgumentException("최소 2개의 자동차가 참여해야 합니다.");
 
         for (String carName : carsName){
-            if (carName.length() > 5 || carName.length() == 0) {
-                throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");
-            }
-            if (carName.equals(" ")) throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
+            if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");
+            if (carName.isBlank()) throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
         }
 
         return carsName;
@@ -43,20 +41,19 @@ public class CreateCar {
         for (String carName : carsName) {
 //            int randomNumber = pickNumberInRange(0, carCount - 1);
 //            cars.add(choseCarType(randomNumber, carName));
-            cars.add(choseCarType(0, carName));
+            cars.add(chooseCarType(0, carName));
         }
 
         return cars;
     }
 
-    public Car choseCarType(int randomNumber, String carName) {
+    public Car chooseCarType(int randomNumber, String carName) {
         CarType carType = CarType.values()[randomNumber];
 
         return switch (carType) {
             case SMALL -> new SmallCar(carName);
-            case Medium -> new MediumCar(carName);
-            case Large -> new LargeCar(carName);
-            default -> throw new IllegalArgumentException("차 종류가 없습니다.");
+            case MEDIUM -> new MediumCar(carName);
+            case LARGE -> new LargeCar(carName);
         };
     }
 }
