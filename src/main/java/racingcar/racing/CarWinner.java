@@ -13,7 +13,7 @@ public class CarWinner {
 
     public void findWinner(List<Car> cars) {
         findMaxDist(cars);
-        searchWinner(cars);
+        decideWinner(cars);
         printWinner();
     }
 
@@ -21,7 +21,7 @@ public class CarWinner {
         for (Car car : cars) maxDist = max(maxDist, car.getPosition());
     }
 
-    private void searchWinner(List<Car> cars) {
+    private void decideWinner(List<Car> cars) {
         for (Car car : cars) if (car.getPosition() == maxDist) winner.add(car);
     }
 
