@@ -11,7 +11,7 @@ public class CarRacing {
     private final GenerateRandomNumber generateRandomNumber;
     private final CreateCar createCar;
     private final InsertCoin insertCoin;
-    private final CarWinner carWinner ;
+    private final CarWinner carWinner;
     private List<Car> cars;
 
     public CarRacing(int randomNumberMin, int randomNumberMax, int randomNumberStandard) {
