@@ -15,7 +15,7 @@ public class InsertCoin {
         }
     }
 
-    public int gameTryCheck(String input) throws IllegalArgumentException {
+    private int gameTryCheck(String input) throws IllegalArgumentException {
         try {
             int coin = Integer.parseInt(input);
             if (coin <= 0) throw new IllegalArgumentException("시도 회수는 1 이상입니다.");

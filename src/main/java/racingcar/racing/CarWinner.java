@@ -17,15 +17,15 @@ public class CarWinner {
         printWinner();
     }
 
-    public void findMaxDist(List<Car> cars) {
+    private void findMaxDist(List<Car> cars) {
         for (Car car : cars) maxDist = max(maxDist, car.getPosition());
     }
 
-    public void searchWinner(List<Car> cars) {
+    private void searchWinner(List<Car> cars) {
         for (Car car : cars) if (car.getPosition() == maxDist) winner.add(car);
     }
 
-    public void printWinner() {
+    private void printWinner() {
         System.out.print("최종 우승자 : ");
 
         System.out.print(winner.get(0).getName());

@@ -23,7 +23,7 @@ public class CreateCar {
         }
     }
 
-    public String[] carNameCheck(String[] carsName) throws IllegalArgumentException {
+    private String[] carNameCheck(String[] carsName) throws IllegalArgumentException {
         if (carsName.length < 2)
             throw new IllegalArgumentException("최소 2개의 자동차가 참여해야 합니다.");
 
@@ -35,7 +35,7 @@ public class CreateCar {
         return carsName;
     }
 
-    public List<Car> createCar() {
+    private List<Car> createCar() {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carsName) {
@@ -47,7 +47,7 @@ public class CreateCar {
         return cars;
     }
 
-    public Car chooseCarType(int randomNumber, String carName) {
+    private Car chooseCarType(int randomNumber, String carName) {
         CarType carType = CarType.values()[randomNumber];
 
         return switch (carType) {

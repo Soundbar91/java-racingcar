@@ -29,13 +29,13 @@ public class CarRacing {
         carWinner.findWinner(cars);
     }
 
-    public void playGame() {
+    private void playGame() {
         System.out.println("실행 결과");
         for (Car car : cars) if(generateRandomNumber.randomNumber()) car.move();
         gamePrint();
     }
 
-    public void gamePrint() {
+    private void gamePrint() {
         for (Car car : cars) {
 //            System.out.print(car.getName() + "(" + car.getClass().getSimpleName() + ")" + " : ");
             System.out.print(car.getName() + " : ");
