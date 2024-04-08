@@ -7,7 +7,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 //import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class CreateCar {
-    private final int carCount = 3;
+    private static final int carCount = 3;
     private String[] carsName;
 
     public List<Car> inputCarName() {
