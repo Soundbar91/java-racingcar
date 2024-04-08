@@ -2,21 +2,25 @@ package racingcar.racing;
 
 import racingcar.car.Car;
 import racingcar.car.CreateCar;
+import racingcar.generateNumber.GenerateRandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 public class CarRacing {
-    private static final int randomNumberMin = 0;
-    private static final int randomNumberMax = 9;
-    private static final int randomNumberStandard = 4;
+    private final GenerateRandomNumber generateRandomNumber;
+    private final CreateCar createCar;
+    private final InsertCoin insertCoin;
+    private final CarWinner carWinner ;
+    private List<Car> cars;
 
-    private List<Car> cars = new ArrayList<>();
-    private CreateCar createCar = new CreateCar();
-    private InsertCoin insertCoin = new InsertCoin();
-    private CarWinner carWinner = new CarWinner();
+    public CarRacing(int randomNumberMin, int randomNumberMax, int randomNumberStandard) {
+        generateRandomNumber = new GenerateRandomNumber(randomNumberMin, randomNumberMax, randomNumberStandard);
+        createCar = new CreateCar();
+        insertCoin = new InsertCoin();
+        carWinner = new CarWinner();
+        cars = new ArrayList<>();
+    }
 
     public void startRacing() {
         cars = createCar.inputCarName();
@@ -27,9 +31,7 @@ public class CarRacing {
 
     public void playGame() {
         System.out.println("실행 결과");
-        for (Car car : cars) {
-            if(randomNumber()) car.move();
-        }
+        for (Car car : cars) if(generateRandomNumber.randomNumber()) car.move();
         gamePrint();
     }
 
@@ -41,9 +43,5 @@ public class CarRacing {
             System.out.println();
         }
         System.out.println();
-    }
-
-    public boolean randomNumber() {
-        return pickNumberInRange(randomNumberMin, randomNumberMax) >= randomNumberStandard;
     }
 }
